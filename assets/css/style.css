@@ -1,0 +1,298 @@
+/* 合同会社日本ソフトエステート サイト共通スタイル
+   色やフォントは旧サイト（BiND）のデザインに合わせています。 */
+
+:root {
+  --page-bg: #afaea6;
+  --header-bg: #e8e1a7;
+  --ink: #39382d;
+  --gold: #e0d78a;
+  --text: #ffffff;
+  --footer-bg: #585223;
+  --footer-bottom-bg: #696226;
+  --panel: rgba(0, 0, 0, 0.5);
+  --serif: "Noto Serif JP", serif;
+  --display: "BIZ UDPMincho", "Noto Serif JP", serif;
+  --content-width: 1000px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+img, video, iframe { max-width: 100%; }
+img { height: auto; display: block; }
+
+a { color: inherit; }
+
+/* ---------- ヘッダー ---------- */
+.site-header {
+  position: relative;
+  background-color: var(--header-bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='42' viewBox='0 0 42 42'%3E%3Cpolygon fill='%23fff' opacity='.2' points='41.35 1.35 40.65 0.65 21 20.29 1.35 0.65 0.65 1.35 20.29 21 0.65 40.65 1.35 41.35 21 21.71 40.65 41.35 41.35 40.65 21.71 21 41.35 1.35'/%3E%3C/svg%3E");
+  color: var(--ink);
+  text-shadow: none;
+}
+
+.site-header__brand {
+  padding: 36px 16px 30px;
+  text-align: center;
+}
+
+.site-logo {
+  font-family: var(--display);
+  font-size: 28px;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.site-logo__decor {
+  display: block;
+  width: 201px;
+  height: 21px;
+  margin: 10px auto 0;
+  background: url("../images/decor-logo.svg") no-repeat center / contain;
+}
+
+.site-nav {
+  background: var(--ink);
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  max-width: var(--content-width);
+}
+
+.site-nav a {
+  display: block;
+  padding: 24px 18px;
+  color: #fff;
+  font-size: 13px;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.site-nav li:last-child a { border-right: 1px solid rgba(255, 255, 255, 0.15); }
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] { background: rgba(255, 255, 255, 0.1); color: var(--gold); }
+
+.nav-toggle, .nav-toggle__btn { display: none; }
+
+/* ---------- トップの大きな画像 ---------- */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 720px;
+  padding: 60px 16px;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero__box {
+  max-width: 1000px;
+  width: 100%;
+  padding: 48px 40px;
+  background: var(--panel);
+  text-align: center;
+}
+
+.hero__title {
+  margin: 0;
+  padding-bottom: 40px;
+  font-family: var(--display);
+  font-size: clamp(30px, 4.2vw, 53px);
+  font-weight: normal;
+  line-height: 1.4;
+  background: url("../images/decor-title.png") no-repeat center bottom;
+}
+
+.hero__lead { margin-top: 24px; }
+.hero__lead p { margin: 0; }
+
+/* ---------- 本文 ---------- */
+.site-main {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 40px 16px 80px;
+}
+
+.sec { margin: 0 0 72px; }
+
+.sec__title {
+  margin: 48px 0 36px;
+  padding-bottom: 28px;
+  color: var(--gold);
+  font-family: var(--display);
+  font-size: 25px;
+  font-weight: normal;
+  text-align: center;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='158' height='15' viewBox='0 0 158 14.56'%3E%3Cg fill='none' stroke='%23e0d78a' stroke-linejoin='round' stroke-width='.75' opacity='.9'%3E%3Crect width='9.77' height='9.77' x='82.21' y='2.4' transform='translate(30.66 -59.45) rotate(45)'/%3E%3Crect width='9.77' height='9.77' x='74.12' y='2.4' transform='translate(28.29 -53.73) rotate(45)'/%3E%3Crect width='9.77' height='9.77' x='66.02' y='2.4' transform='translate(25.92 -48.01) rotate(45)'/%3E%3Cline x1='94' x2='158' y1='7.28' y2='7.28'/%3E%3Cline x2='64' y1='7.28' y2='7.28'/%3E%3C/g%3E%3C/svg%3E") no-repeat center bottom;
+}
+
+.sec__subtitle {
+  margin: 0 0 12px;
+  color: var(--gold);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.sec__row { display: grid; gap: 32px; align-items: start; }
+.sec__row--left { grid-template-columns: 5fr 7fr; }
+.sec__row--right { grid-template-columns: 7fr 5fr; }
+.sec__row--right .sec__figure { order: 2; }
+.sec__row--top { grid-template-columns: 1fr; }
+
+.sec__figure { margin: 0; }
+.sec__figure img { width: 100%; }
+.sec__figure figcaption { margin-top: 8px; font-size: 13px; }
+
+.sec__text > :first-child { margin-top: 0; }
+.sec__text p { margin: 0 0 1em; }
+
+.sec__video { margin-top: 24px; }
+.sec__video video { width: 100%; background: #000; }
+
+.sec__form iframe {
+  width: 100%;
+  height: 820px;
+  border: 0;
+  background: transparent;
+}
+
+/* カード（トップページ「わたしたちについて」） */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.card__link { text-decoration: none; }
+.card__title {
+  margin: 16px 0 8px;
+  color: var(--gold);
+  font-size: 19px;
+  font-weight: 600;
+}
+.card p { margin: 0; }
+
+/* 表（会社概要・ポリシーなど） */
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 24px;
+}
+
+.info-table th,
+.info-table td {
+  padding: 18px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  vertical-align: top;
+  text-align: left;
+}
+
+.info-table th {
+  width: 26%;
+  color: var(--gold);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ---------- フッター ---------- */
+.site-footer {
+  background: var(--footer-bg);
+  text-align: center;
+}
+
+.footer-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 24px;
+  margin: 0 auto;
+  padding: 32px 16px 8px;
+  max-width: var(--content-width);
+  list-style: none;
+}
+
+.footer-nav a { font-size: 12px; text-decoration: none; }
+.footer-nav a:hover { color: var(--gold); }
+
+.footer-address { margin: 8px 16px 32px; font-size: 14px; }
+
+.footer-bottom {
+  padding: 20px 16px;
+  background: var(--footer-bottom-bg);
+}
+
+.footer-logo { margin: 0; font-family: var(--display); font-size: 18px; }
+.footer-copy { margin: 0; font-size: 12px; }
+
+/* ---------- スマートフォン ---------- */
+@media (max-width: 768px) {
+  .site-header__brand { padding: 20px 64px 18px 16px; text-align: left; }
+  .site-logo { font-size: 22px; }
+  .site-logo__decor { margin-left: 0; width: 150px; height: 16px; }
+
+  .nav-toggle__btn {
+    display: block;
+    position: absolute;
+    top: 22px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+  .nav-toggle__btn span,
+  .nav-toggle__btn span::before,
+  .nav-toggle__btn span::after {
+    position: absolute;
+    left: 8px;
+    width: 24px;
+    height: 2px;
+    background: var(--ink);
+    content: "";
+  }
+  .nav-toggle__btn span { top: 19px; }
+  .nav-toggle__btn span::before { top: -7px; left: 0; }
+  .nav-toggle__btn span::after { top: 7px; left: 0; }
+
+  .site-nav { display: none; }
+  .nav-toggle:checked ~ .site-nav { display: block; }
+  .site-nav ul { flex-direction: column; }
+  .site-nav a { border: 0; border-top: 1px solid rgba(255, 255, 255, 0.15); padding: 14px 16px; }
+  .site-nav li:last-child a { border-right: 0; }
+
+  .hero { min-height: 480px; }
+  .hero__box { padding: 32px 20px; }
+  .hero__lead br { display: none; }
+
+  .sec__row--left,
+  .sec__row--right { grid-template-columns: 1fr; }
+  .sec__row--right .sec__figure { order: 0; }
+
+  .info-table th,
+  .info-table td { display: block; width: 100%; white-space: normal; }
+  .info-table th { padding-bottom: 4px; border-bottom: 0; }
+  .info-table td { padding-top: 0; }
+}

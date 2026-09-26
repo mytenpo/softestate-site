@@ -1,0 +1,37 @@
+company_name: 合同会社日本ソフトエステート
+site_logo_text: Soft Estate Japan
+title_suffix: 合同会社日本ソフトエステート　店舗開発、外国人労働者サポート、マーケティング開発なら
+default_description: 店舗の物件をお探しなら日本ソフトエステートへお気軽にご相談ください
+postal_code: 〒231-0026
+address: 神奈川県横浜市中区寿町２－５－１２
+copyright: Soft Estate Japan
+contact_form_url: https://smoothcontact.jp/front/output/7f00000175ab2d963ca7822a653454d?bdsite=1
+google_analytics_id: UA-82651203-1
+header_menu:
+  - label: 弊社のサービス
+    url: /business.html
+  - label: 会社紹介
+    url: /about.html
+  - label: 会社概要
+    url: /company.html
+  - label: アクセス
+    url: /access.html
+  - label: パートナー企業 様との連携
+    url: /information.html
+footer_menu:
+  - label: 弊社のサービス
+    url: /business.html
+  - label: 会社紹介
+    url: /about.html
+  - label: 会社概要
+    url: /company.html
+  - label: パートナー企業 様
+    url: /information.html
+  - label: お問い合わせ
+    url: /contact.html
+  - label: アクセス
+    url: /access.html
+  - label: プライバシーポリシー
+    url: /privacypolicy.html
+  - label: サイトポリシー
+    url: /sitepolicy.html

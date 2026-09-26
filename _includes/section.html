@@ -1,0 +1,69 @@
+{%- assign sec = include.section -%}
+{%- assign pos = sec.image_position | default: "left" -%}
+<section class="sec">
+  {%- if sec.heading %}
+  <h2 class="sec__title">{{ sec.heading }}</h2>
+  {%- endif %}
+
+  {%- if sec.subheading or sec.body or sec.image %}
+  <div class="sec__row{% if sec.image and pos != 'none' %} sec__row--{{ pos }}{% endif %}">
+    {%- if sec.image and pos != "none" %}
+    <figure class="sec__figure">
+      {%- if sec.zoom %}<a href="{{ sec.image | relative_url }}" target="_blank" rel="noopener">{% endif -%}
+      <img src="{{ sec.image | relative_url }}" alt="{{ sec.image_alt | default: sec.subheading | default: sec.heading }}" loading="lazy">
+      {%- if sec.zoom %}</a>{% endif %}
+      {%- if sec.caption %}
+      <figcaption>{{ sec.caption }}</figcaption>
+      {%- endif %}
+    </figure>
+    {%- endif %}
+    {%- if sec.subheading or sec.body %}
+    <div class="sec__text">
+      {%- if sec.subheading %}
+      <h3 class="sec__subtitle">{{ sec.subheading }}</h3>
+      {%- endif %}
+      {{ sec.body | markdownify }}
+    </div>
+    {%- endif %}
+  </div>
+  {%- endif %}
+
+  {%- if sec.video %}
+  <div class="sec__video">
+    <video src="{{ sec.video | relative_url }}" controls playsinline preload="metadata"></video>
+  </div>
+  {%- endif %}
+
+  {%- if sec.cards and sec.cards.size > 0 %}
+  <div class="cards">
+    {%- for card in sec.cards %}
+    <article class="card">
+      {%- if card.link %}<a href="{{ card.link | relative_url }}" class="card__link">{% endif %}
+      {%- if card.image %}
+      <img src="{{ card.image | relative_url }}" alt="{{ card.title }}" loading="lazy">
+      {%- endif %}
+      <h3 class="card__title">{{ card.title }}</h3>
+      {%- if card.link %}</a>{% endif %}
+      {{ card.text | markdownify }}
+    </article>
+    {%- endfor %}
+  </div>
+  {%- endif %}
+
+  {%- if sec.rows and sec.rows.size > 0 %}
+  <table class="info-table">
+    {%- for row in sec.rows %}
+    <tr>
+      <th scope="row">{{ row.label }}</th>
+      <td>{{ row.value | strip | newline_to_br }}</td>
+    </tr>
+    {%- endfor %}
+  </table>
+  {%- endif %}
+
+  {%- if sec.contact_form %}
+  <div class="sec__form">
+    <iframe src="{{ site.data.settings.contact_form_url }}" title="お問い合わせフォーム" loading="lazy"></iframe>
+  </div>
+  {%- endif %}
+</section>

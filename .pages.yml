@@ -1,0 +1,297 @@
+# Pages CMS（https://app.pagescms.org）の編集画面の設定です。
+
+media:
+  - name: images
+    label: 画像
+    input: assets/images
+    output: /assets/images
+    categories: [image]
+    rename: safe
+  - name: videos
+    label: 動画
+    input: assets/video
+    output: /assets/video
+    categories: [video]
+    rename: safe
+
+components:
+  section:
+    type: object
+    label: ブロック
+    description: ページの中の1つのまとまりです。「＋」で追加、ドラッグで並べ替えができます。
+    list:
+      collapsible:
+        collapsed: true
+        summary: "{index}. {heading}{subheading}"
+    fields:
+      - name: heading
+        label: 大見出し（飾り線つき）
+        type: string
+      - name: subheading
+        label: 小見出し
+        type: string
+      - name: image
+        label: 写真
+        type: image
+        options:
+          media: images
+      - name: image_position
+        label: 写真の位置
+        type: select
+        options:
+          values:
+            - name: left
+              label: 左（文章は右）
+            - name: right
+              label: 右（文章は左）
+            - name: top
+              label: 上（大きく表示）
+            - name: none
+              label: 写真を表示しない
+      - name: image_alt
+        label: 写真の説明（目の不自由な方・検索エンジン向け）
+        type: string
+      - name: caption
+        label: 写真の下に出す説明文
+        type: string
+      - name: zoom
+        label: 写真をクリックで拡大できるようにする
+        type: boolean
+      - name: body
+        label: 本文
+        type: rich-text
+        options:
+          media: images
+      - name: video
+        label: 動画
+        type: file
+        options:
+          media: videos
+      - name: cards
+        label: カード（写真つきの横並び）
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: タイトル
+            type: string
+          - name: image
+            label: 写真
+            type: image
+            options:
+              media: images
+          - name: text
+            label: 文章
+            type: rich-text
+            options:
+              media: false
+          - name: link
+            label: リンク先（例：/about.html）
+            type: string
+      - name: rows
+        label: 表（項目名と内容）
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}"
+        fields:
+          - name: label
+            label: 項目名
+            type: string
+          - name: value
+            label: 内容（改行はそのまま表示されます）
+            type: text
+      - name: contact_form
+        label: お問い合わせフォームを表示する
+        type: boolean
+
+  page_title:
+    type: string
+    label: ページ名
+    required: true
+
+  page_description:
+    type: text
+    label: ページの説明（検索結果に表示されます。空欄なら共通の説明文）
+
+  permalink:
+    type: string
+    label: ページのアドレス
+    hidden: true
+
+content:
+  - name: home
+    label: トップページ
+    type: file
+    path: index.md
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        component: page_title
+      - name: description
+        component: page_description
+      - name: permalink
+        component: permalink
+      - name: hero
+        label: 一番上の大きな画像と文章
+        type: object
+        fields:
+          - name: title
+            label: キャッチコピー（改行できます）
+            type: text
+          - name: lead
+            label: 説明文
+            type: rich-text
+            options:
+              media: false
+          - name: image
+            label: 背景の写真
+            type: image
+            options:
+              media: images
+      - name: sections
+        label: ページの中身
+        component: section
+
+  - name: business
+    label: 弊社のサービス
+    type: file
+    path: business.md
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        component: page_title
+      - name: seo_title
+        label: ブラウザのタブに出すタイトル（空欄なら自動）
+        type: string
+      - name: description
+        component: page_description
+      - name: permalink
+        component: permalink
+      - name: sections
+        label: ページの中身
+        component: section
+
+  - name: about
+    label: 会社紹介
+    type: file
+    path: about.md
+    format: yaml-frontmatter
+    fields: &page_fields
+      - name: title
+        component: page_title
+      - name: description
+        component: page_description
+      - name: permalink
+        component: permalink
+      - name: sections
+        label: ページの中身
+        component: section
+
+  - name: company
+    label: 会社概要
+    type: file
+    path: company.md
+    format: yaml-frontmatter
+    fields: *page_fields
+
+  - name: access
+    label: アクセス
+    type: file
+    path: access.md
+    format: yaml-frontmatter
+    fields: *page_fields
+
+  - name: information
+    label: パートナー企業 様
+    type: file
+    path: information.md
+    format: yaml-frontmatter
+    fields: *page_fields
+
+  - name: contact
+    label: お問い合わせ
+    type: file
+    path: contact.md
+    format: yaml-frontmatter
+    fields: *page_fields
+
+  - name: privacypolicy
+    label: プライバシーポリシー
+    type: file
+    path: privacypolicy.md
+    format: yaml-frontmatter
+    fields: *page_fields
+
+  - name: sitepolicy
+    label: サイトポリシー
+    type: file
+    path: sitepolicy.md
+    format: yaml-frontmatter
+    fields: *page_fields
+
+  - name: settings
+    label: サイト共通の設定（会社名・住所・メニュー）
+    type: file
+    path: _data/settings.yml
+    format: yaml
+    fields:
+      - name: company_name
+        label: 会社名
+        type: string
+      - name: site_logo_text
+        label: ロゴの文字（ヘッダー・フッター）
+        type: string
+      - name: title_suffix
+        label: ブラウザのタブでページ名の後ろにつく文字
+        type: string
+      - name: default_description
+        label: 共通の説明文（検索結果に表示）
+        type: text
+      - name: postal_code
+        label: 郵便番号
+        type: string
+      - name: address
+        label: 住所（フッターに表示）
+        type: string
+      - name: copyright
+        label: 著作権表示の名前
+        type: string
+      - name: contact_form_url
+        label: お問い合わせフォーム（SmoothContact）のアドレス
+        type: string
+      - name: google_analytics_id
+        label: Google アナリティクスのID
+        type: string
+      - name: header_menu
+        label: 上のメニュー
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}"
+        fields:
+          - name: label
+            label: 表示する文字
+            type: string
+          - name: url
+            label: リンク先（例：/about.html）
+            type: string
+      - name: footer_menu
+        label: 下のメニュー
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}"
+        fields:
+          - name: label
+            label: 表示する文字
+            type: string
+          - name: url
+            label: リンク先（例：/about.html）
+            type: string

@@ -1,0 +1,19 @@
+# サイト全体の設定
+# 独自ドメイン（www.softestate.co.jp）に切り替えるときは baseurl を "" にします。
+title: 合同会社日本ソフトエステート
+url: "https://mytenpo.github.io"
+baseurl: "/softestate-site"
+lang: ja
+
+plugins:
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - .pages.yml
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
